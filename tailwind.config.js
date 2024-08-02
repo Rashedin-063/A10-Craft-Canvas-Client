@@ -12,9 +12,8 @@ export default {
         'warm-coral': '#FF6F69',
         'deep-plum': '#6D28C9',
         cream: '#FFF5E1',
-        'light-cream': '#F4F6E3',
+        'light-cream': '#FFFFF9',
         'charcoal-gray': '#333333',
-       
       },
     },
   },

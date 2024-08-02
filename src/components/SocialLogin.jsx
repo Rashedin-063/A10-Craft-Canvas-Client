@@ -26,20 +26,20 @@ const SocialLogin = () => {
 
   return (
     <div>
-      <div className='mt-8 flex flex-col md:flex-row justify-between'>
+      <div className='mt-2 flex flex-col md:flex-row justify-between'>
         <a
           onClick={handleGoogleLogin}
-          className='cursor-pointer text-2xl flex gap-2 items-center bg-deep-plum text-light-cream px-8 py-2 rounded-md mb-4 md:mb-0 justify-center'
+          className='cursor-pointer text-2xl flex gap-2 items-center bg-deep-plum text-light-cream px-8 py-2 rounded-md mb-2 md:mb-0 justify-center'
         >
           <FaGoogle />
-          <p className='text-lg'>Google Login</p>
+          <p className='text-base'>Google Login</p>
         </a>
         <a
           onClick={handleGithubLogin}
           className='cursor-pointer text-2xl flex gap-2 items-center bg-deep-plum text-light-cream px-8 py-2 rounded-md justify-center'
         >
           <FaGithub />
-          <p className='text-lg'>Github Login</p>
+          <p className='text-base'>Github Login</p>
         </a>
       </div>
     </div>

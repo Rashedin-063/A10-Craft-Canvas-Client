@@ -48,17 +48,17 @@ const Register = () => {
   };
 
   return (
-    <div className='min-h-[517px] lg:min-h-[501px]'>
+    <div>
       <Helmet>
         <title>Register</title>
       </Helmet>
       <div className='px-4'>
-        <h2 className='text-3xl my-10 text-center font-semibold tracking-wide'>
+        <h2 className='text-3xl text-center font-semibold tracking-wide mt-1 mb-3'>
           Please Register
         </h2>
         <form
           onSubmit={handleSubmit(handleRegister)}
-          className='w-3/4 lg:w-1/2 mx-auto space-y-4'
+          className='w-3/4 lg:w-1/2 mx-auto space-y-2'
         >
           <div className='form-control'>
             <input
@@ -117,7 +117,7 @@ const Register = () => {
             </button>
           </div>
         </form>
-        <p className='text-center mt-4 '>
+        <p className='text-center text-lg pt-2'>
           Already have an account?{' '}
           <Link className='text-blue-600 font-bold' to='/login'>
             Login

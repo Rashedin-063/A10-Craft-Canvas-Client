@@ -39,7 +39,7 @@ const Login = () => {
         <title>Craft Canvas || Login</title>
       </Helmet>
       <div>
-        <h2 className='text-3xl mt-5 text-center font-semibold tracking-wide'>
+        <h2 className='text-3xl mt-1 text-center font-semibold tracking-wide'>
           Please Sign In
         </h2>
         <form
@@ -48,7 +48,7 @@ const Login = () => {
         >
           <div className='form-control'>
             <label className='label'>
-              <span className='label-text'>Email</span>
+              <span className='label-text -mb-1'>Email</span>
             </label>
             <input
               type='email'
@@ -60,8 +60,8 @@ const Login = () => {
               <p className='text-red-500 mt-2'>{errors.email.message}</p>
             )}
           </div>
-          <div className='form-control relative flex flex-col mt-3'>
-            <label className='label'>
+          <div className='form-control relative flex flex-col mt-1'>
+            <label className='label -mb-1'>
               <span className='label-text'>Password</span>
             </label>
             <input
@@ -83,13 +83,13 @@ const Login = () => {
             <label className='label'>
               <a
                 href='#'
-                className='label-text-alt link link-hover text-base mt-2'
+                className='label-text-alt link link-hover text-base'
               >
                 Forgot password?
               </a>
             </label>
           </div>
-          <div className='form-control mt-6'>
+          <div className='form-control'>
             <button
               type='submit'
               className='btn bg-warm-coral
@@ -101,7 +101,7 @@ const Login = () => {
           </div>
           <SocialLogin />
         </form>
-        <p className='text-center mt-8 lg:pb-[49px] p-1 w-3/4 lg:w-1/2 mx-auto rounded shadow-lg'>
+        <p className='text-center py-2 w-3/4 lg:w-1/2 mx-auto text-lg'>
           Do not have an account{' '}
           <Link className='text-blue-600 font-bold' to='/register'>
             Register

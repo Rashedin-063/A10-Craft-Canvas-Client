@@ -9,7 +9,7 @@ const items = [
   { to: '/allItems', label: 'All Items' },
   { to: '/addItems', label: 'Add Items' },
   { to: '/myList', label: 'My List' },
-  { to: '/about', label: 'About' },
+  { to: '/about', label: 'About Us' },
 ];
 
 const Navbar = () => {
