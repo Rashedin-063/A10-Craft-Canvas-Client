@@ -29,16 +29,17 @@ const SocialLogin = () => {
       <div className='mt-2 flex flex-col md:flex-row justify-between'>
         <a
           onClick={handleGoogleLogin}
-          className='cursor-pointer text-2xl flex gap-2 items-center bg-deep-plum text-light-cream px-8 py-2 rounded-md mb-2 md:mb-0 justify-center'
+          className='cursor-pointer text-2xl flex gap-3 items-center bg-deep-plum 
+          hover:bg-purple-800 text-light-cream px-8 py-2 rounded-md mb-2 md:mb-0 justify-center'
         >
-          <FaGoogle />
+          <FaGoogle  size={21} />
           <p className='text-base'>Google Login</p>
         </a>
         <a
           onClick={handleGithubLogin}
-          className='cursor-pointer text-2xl flex gap-2 items-center bg-deep-plum text-light-cream px-8 py-2 rounded-md justify-center'
+          className='cursor-pointer text-2xl flex gap-3 items-center bg-deep-plum hover:bg-purple-800 text-light-cream px-8 py-2 rounded-md justify-center'
         >
-          <FaGithub />
+          <FaGithub size={23} />
           <p className='text-base'>Github Login</p>
         </a>
       </div>

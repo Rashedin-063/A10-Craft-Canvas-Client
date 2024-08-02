@@ -21,7 +21,7 @@ const Footer = () => {
               <div className=''>
                 <Link
                   to='/'
-                  className='text-lg lg:text-xl font-bold cursor-pointer flex items-center text-warm-coral'
+                  className='text-lg lg:text-xl font-bold cursor-pointer flex items-center text-warm-coral font-handlee'
                 >
                   Craft Canvas
                 </Link>

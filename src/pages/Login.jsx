@@ -17,7 +17,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
   const onSubmit = ({ email, password }) => {
@@ -92,11 +92,12 @@ const Login = () => {
           <div className='form-control'>
             <button
               type='submit'
+              disabled={isSubmitting}
               className='btn bg-warm-coral
               hover:bg-deep-plum
-              hover text-xl font-semibold text-light-cream'
+              hover text-base text-light-cream'
             >
-              Sign In
+              {isSubmitting ? 'Loading' : 'Sign In'}
             </button>
           </div>
           <SocialLogin />

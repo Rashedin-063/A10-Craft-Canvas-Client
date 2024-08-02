@@ -30,7 +30,7 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(schema),
   });
@@ -50,7 +50,7 @@ const Register = () => {
   return (
     <div>
       <Helmet>
-        <title>Register</title>
+        <title>Craft Canvas || Register</title>
       </Helmet>
       <div className='px-4'>
         <h2 className='text-3xl text-center font-semibold tracking-wide mt-1 mb-3'>
@@ -112,8 +112,10 @@ const Register = () => {
             )}
           </div>
           <div className='form-control mt-6'>
-            <button className='btn bg-warm-coral text-light-cream'>
-              Register
+            <button
+              disabled={isSubmitting}
+              className='btn bg-warm-coral text-light-cream hover:bg-deep-plum'>
+             {isSubmitting ? 'Loading' : 'Register'}
             </button>
           </div>
         </form>
