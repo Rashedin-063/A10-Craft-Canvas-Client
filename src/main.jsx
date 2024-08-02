@@ -6,12 +6,16 @@ import router from './routes/router';
 import { HelmetProvider } from 'react-helmet-async';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ThemeProvider from './contexts/ThemeProvider';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <HelmetProvider>
+    <ThemeProvider>
+      <HelmetProvider>
         <RouterProvider router={router} />
         <ToastContainer />
-    </HelmetProvider>
+      </HelmetProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

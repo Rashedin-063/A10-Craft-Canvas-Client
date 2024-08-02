@@ -1,11 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import Navbar from '../pages/shared/Navbar';
 import Footer from '../pages/shared/Footer';
+import useTheme from '../hooks/useTheme';
 
 const Root = () => {
+   const { theme } = useTheme();
   return (
     <div>
-      <div className='max-w-7xl mx-auto bg-cream text-charcoal-gray px-2 lg:px-4'>
+      <div
+        className={`max-w-7xl mx-auto lg:px-4 font-fanwood ${theme?.colors?.background} ${theme?.colors?.textPrimary}`}
+      >
         <Navbar />
         <Outlet />
       </div>

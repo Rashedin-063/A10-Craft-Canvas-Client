@@ -1,17 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
+
   theme: {
+    fontFamily: {
+      fanwood: "'Fanwood Text', serif",
+      handlee: "'Handlee', cursive",
+    },
     extend: {
       colors: {
-        'warm-coral': '#FF6F61',
-        'soft-mint': '#98FF98',
-        'sunny-yellow': '#F7E7A2',
-        'sky-blue': '#87CEEB',
-        'deep-plum': '#6D28D9',
-        'light-gray': '#F5F5F5',
+        'warm-coral': '#FF6F69',
+        'deep-plum': '#6D28C9',
         cream: '#FFF5E1',
+        'light-cream': '#F4F6E3',
         'charcoal-gray': '#333333',
+       
       },
     },
   },
