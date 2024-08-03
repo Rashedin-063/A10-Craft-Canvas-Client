@@ -1,7 +1,7 @@
 // import AOS
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-// AOS.init();
+AOS.init()
 
 // import Swiper JS
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -23,16 +23,9 @@ import banner2 from '../assets/banner2.jpg';
 import banner3 from '../assets/banner3.jpg';
 import banner4 from '../assets/banner4.jpg';
 import banner5 from '../assets/banner5.jpg';
-import { useEffect } from 'react';
 
 const Banner = () => {
-  useEffect(() => {
-    AOS.init({ once: true });
-  }, []);
 
-  const handleSlideChange = () => {
-    AOS.refresh();
-  };
   return (
     <div className='mt-2 lg:mt-6 text-justify'>
       <Swiper
@@ -49,7 +42,6 @@ const Banner = () => {
           clickable: true,
         }}
         navigation={true}
-        onSlideChange={handleSlideChange}
         modules={[Autoplay, Pagination, Navigation]}
         className='mySwiper'
       >
