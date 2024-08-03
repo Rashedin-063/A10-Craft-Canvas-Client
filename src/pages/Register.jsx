@@ -31,7 +31,7 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
   });
@@ -147,7 +147,7 @@ const Register = () => {
               className='btn bg-warm-coral text-light-cream
                hover:bg-deep-plum'
             >
-              {isSubmitting ? 'Loading' : 'Register'}
+             Register
             </button>
           </div>
         </form>

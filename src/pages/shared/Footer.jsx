@@ -25,7 +25,7 @@ const Footer = () => {
                 >
                   Craft Canvas
                 </Link>
-                <p className='text-xs opacity-85'>
+                <p className='text-xs'>
                   Copyright © ${new Date().getFullYear()} - All right reserved
                 </p>
               </div>

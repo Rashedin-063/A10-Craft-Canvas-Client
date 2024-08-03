@@ -79,6 +79,7 @@ const AuthProvider = ({ children }) => {
   const deleteCurrentUser = () => {
     setLoading(true)
     const user = auth.currentUser;
+    
     return deleteUser(user);
   }
 
