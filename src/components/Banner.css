@@ -1,0 +1,15 @@
+.mySwiper .swiper-button-next, .mySwiper .swiper-button-prev {
+  background-color: #00000090; /* Semi-transparent background */
+  color: white; /* Arrow color */
+  width: 50px; /* Custom width */
+  height: 50px; /* Custom height */
+  border-radius: 50%; /* Make them circular */
+}
+
+.mySwiper .swiper-button-next:hover, .mySwiper .swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
+.mySwiper .swiper-button-next::after, .mySwiper .swiper-button-prev::after {
+  font-size: 20px; /* Custom font size for the arrow */
+}

@@ -111,12 +111,10 @@ const Navbar = () => {
       <div className='navbar-end flex gap-2 mt-2'>
         {user ? (
           <div className='flex gap-2 items-center '>
-            <Tooltip title={user.displayName}
-              TransitionComponent={Zoom}
-              arrow>
+            <Tooltip title={user.displayName} TransitionComponent={Zoom} arrow>
               <img
                 className='h-9 w-9 md:h-10 md:w-10 rounded-full mb-2 md:mb-0'
-                src={user.photoURL}
+                src={`${user.photoURL} ||`}
                 alt='User Pic'
               />
             </Tooltip>

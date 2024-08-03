@@ -16,6 +16,7 @@
     "@mui/material": "^5.16.6",
     "@react-awesome/components": "^1.0.20",
     "@reatom/npm-zod": "^3.10.3",
+    "aos": "^2.3.4",
     "firebase": "^10.12.4",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
@@ -28,7 +29,8 @@
     "react-router-dom": "^6.24.1",
     "react-toastify": "^10.0.5",
     "sort-by": "^0.0.2",
-    "sweetalert2": "^11.12.3"
+    "sweetalert2": "^11.12.3",
+    "swiper": "^11.1.9"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
