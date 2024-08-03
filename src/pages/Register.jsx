@@ -5,8 +5,8 @@ import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-// import useAuth from '../hooks/useAuth';
 import { toast } from 'react-toastify';
+import useAuth from '../hooks/useAuth';
 
 const schema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -24,8 +24,8 @@ const schema = z.object({
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  // const { createUser, updateUserProfile } = useAuth();
-  const navigate = useNavigate();
+
+  const { createUser } = useAuth();
 
   const {
     register,
@@ -37,6 +37,16 @@ const Register = () => {
 
   const handleRegister = ({ name, photo, email, password }) => {
     console.log(name, photo, email, password);
+
+    createUser(email, password)
+      .then(() => {
+        toast.success('Your registration is successful');
+
+      })
+      .catch(error => {
+      console.log(error.message)
+      
+    })
 
     // createUser(email, password)
     //   .then(() => {
