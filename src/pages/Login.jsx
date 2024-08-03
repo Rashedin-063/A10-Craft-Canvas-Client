@@ -4,15 +4,17 @@ import { useState } from 'react';
 import SocialLogin from '../components/SocialLogin';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
-// import useAuth from '../hooks/useAuth';
 import { toast } from 'react-toastify';
-import Button from '../components/Button';
+import useAuth from './../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  const {logInUser} = useAuth()
 
   const {
     register,
@@ -23,14 +25,41 @@ const Login = () => {
   const onSubmit = ({ email, password }) => {
     console.log(email, password);
 
-    // logInUser(email, password)
-    //   .then(() => {
-    //     toast.success('Your login is successful');
-    //   navigate(location?.state || '/');
-    //   })
-    //   .catch(() => {
-    //     toast.error(`Your email or Password doesn't match`);
-    //   });
+    logInUser(email, password)
+      .then((result) => {
+        console.log(result.user)
+        const lastSignIn = result.user.metadata.lastSignInTime;
+        const user = { email, lastSignIn };
+
+
+        toast.success('Your login is successful');
+
+        // fetch request
+  fetch('http://localhost:5000/users', {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(user),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      if (data.modifiedCount > 0) {
+        Swal.fire({
+          title: 'Success!',
+          text: 'User Updated Successfully',
+          icon: 'success',
+          confirmButtonText: 'Cool',
+        });
+      }
+    });   
+        
+      navigate(location?.state || '/');
+      })
+      .catch(() => {
+        toast.error(`Your email or Password doesn't match`);
+      });
   };
 
   return (

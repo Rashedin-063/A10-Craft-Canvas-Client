@@ -8,7 +8,8 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  deleteUser
+  deleteUser,
+  updateProfile
 } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
 
@@ -41,6 +42,15 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password)
   };
 
+  // update user
+  const updateUserProfile = ( name, photo) => {
+    setLoading(true)
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo
+    })
+  }
+
   // login user
   const logInUser = (email, password) => {
     setLoading(true);
@@ -67,6 +77,7 @@ const AuthProvider = ({ children }) => {
 
   // delete user
   const deleteCurrentUser = () => {
+    setLoading(true)
     const user = auth.currentUser;
     return deleteUser(user);
   }
@@ -75,6 +86,7 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     createUser,
+    updateUserProfile,
     logInUser,
     logOutUser,
     googleLogin,

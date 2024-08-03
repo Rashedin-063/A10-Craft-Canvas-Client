@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'react-toastify';
 import useAuth from '../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const schema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -35,27 +36,47 @@ const Register = () => {
     resolver: zodResolver(schema),
   });
 
-  const handleRegister = ({ name, photo, email, password }) => {
-    console.log(name, photo, email, password);
+    const handleRegister = ({ name, photo, email, password }) => {
+      console.log(name, photo, email, password);
 
-    createUser(email, password)
-      .then(() => {
-        toast.success('Your registration is successful');
+      createUser(email, password)
+        .then((result) => {
+          toast.success('Your registration is successful');
+          console.log(result.user)
+          const creationTime = result.user?.metadata?.creationTime;
+          const lastSignInTime = result.user?.metadata?.lastSignInTime;
+
+          const user = { name, email, photo, creationTime, lastSignInTime }
+
+   // post request
+           fetch('http://localhost:5000/users', {
+             method: 'POST',
+             headers: {
+               'Content-Type': 'application/json',
+             },
+             body: JSON.stringify(user),
+           })
+             .then((res) => res.json())
+             .then((data) => {
+               console.log(data);
+               if (data.insertedId) {
+                 Swal.fire({
+                   title: 'Success!',
+                   text: 'User Added Successfully',
+                   icon: 'success',
+                   confirmButtonText: 'Cool',
+                 });
+               }
+             });
+
+        })
+        .catch(error => {
+        console.log(error.message)
 
       })
-      .catch(error => {
-      console.log(error.message)
-      
-    })
+    };
 
-    // createUser(email, password)
-    //   .then(() => {
-    //     toast.success('Your registration is successful')
-    //     updateUserProfile(name, photo).then(() =>
-    //       setTimeout(() => navigate('/'), 3000)
-    //     );
-    //   })
-  };
+
 
   return (
     <div>
@@ -123,9 +144,10 @@ const Register = () => {
           </div>
           <div className='form-control mt-6'>
             <button
-              disabled={isSubmitting}
-              className='btn bg-warm-coral text-light-cream hover:bg-deep-plum'>
-             {isSubmitting ? 'Loading' : 'Register'}
+              className='btn bg-warm-coral text-light-cream
+               hover:bg-deep-plum'
+            >
+              {isSubmitting ? 'Loading' : 'Register'}
             </button>
           </div>
         </form>
