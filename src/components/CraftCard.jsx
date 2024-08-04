@@ -11,36 +11,17 @@ const CraftCard = ({ item }) => {
     short_description,
     price,
     rating,
-    customization,
-    processing_time,
-    stockStatus,
-    user_email,
-    user_name, } = item
-  
-  console.log(
-    _id,
-    image,
-    item_name,
-    subcategory_name,
-    short_description,
-    price,
-    rating,
-    customization,
-    processing_time,
-    stockStatus,
-    user_email,
-    user_name
-  );
-  
-  
+   } = item
+
   return (
     <div>
       <div
         data-aos='zoom-in'
-        data-aos-duration='3000'
+        data-aos-duration='2000'
+        data-aos-easing='ease-out-cubic'
         className='card w-full bg-charcoal-gray shadow-xl py-5 max-h-xl max-h-2xl text-light-cream '
       >
-        <figure className='max-w-72 h-40 mx-auto '>
+        <figure className=' h-40 mx-auto '>
           <img src={image} alt='Album' className='rounded-xl' />
         </figure>
         <div className='card-body items-center text-center -mt-4'>
@@ -51,10 +32,10 @@ const CraftCard = ({ item }) => {
             {short_description}
           </p>
           <div className='flex gap-8 md:gap-4'>
-            <p className='text-xl bg-warm-coral px-2 py-1 rounded-md shadow-xl  my-2'>
+            <p className='md:text-lg bg-warm-coral px-2 py-1 rounded-md shadow-xl  my-2'>
               <span> Rating:</span> {rating}
             </p>
-            <p className='text-xl bg-warm-coral px-2 py-1 rounded-md shadow-xl my-2 '>
+            <p className='md:text-lg bg-warm-coral px-2 py-1 rounded-md shadow-xl my-2 '>
               <span> Price:</span> ${price}
             </p>
           </div>

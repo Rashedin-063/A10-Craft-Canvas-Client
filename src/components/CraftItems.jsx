@@ -28,7 +28,7 @@ const CraftItems = ({ items }) => {
           <CraftCard key={item._id} item={item} />
         ))}
       </div>
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'></div>
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8'></div>
       <div data-aos='zoom-in' data-aos-duration='2000'>
         <Link to='/allItems'>
           <Button type='primary' label='All Items'></Button>
