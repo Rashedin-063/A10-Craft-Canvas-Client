@@ -4,7 +4,7 @@ import CraftCard from './CraftCard';
 import { Link } from 'react-router-dom';
 
 const CraftItems = ({ items }) => {
-  console.log(items);
+
 
   return (
     <div className='text-center'>
@@ -23,7 +23,7 @@ const CraftItems = ({ items }) => {
         Discover one-of-a-kind craft creations that add a touch of artistic
         charm to any space. Each item is crafted to ignite your creativity
       </p>
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch'>
+      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-stretch'>
         {items.map((item) => (
           <CraftCard key={item._id} item={item} />
         ))}

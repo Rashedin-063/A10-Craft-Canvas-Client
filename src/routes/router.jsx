@@ -7,17 +7,25 @@ import About from '../pages/About';
 import AddItems from '../pages/AddItems';
 import PrivateRoute from './PrivateRoute';
 import ErrorPage from './../error/ErrorPage';
+import AllItems from '../pages/AllItems';
+import ViewDetails from '../pages/ViewDetails';
+import MyList from '../pages/MyList';
 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
         element: <Home />,
+        loader: () => fetch('http://localhost:5000/items'),
+      },
+      {
+        path: '/allItems',
+        element: <AllItems />,
         loader: () => fetch('http://localhost:5000/items'),
       },
       {
@@ -27,6 +35,21 @@ const router = createBrowserRouter([
             <AddItems />
           </PrivateRoute>
         ),
+      },
+      {
+        path: '/details/:id',
+        element: (
+          <PrivateRoute>
+            <ViewDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/items/${params.id}`),
+      },
+      {
+        path: '/myList',
+        element: <MyList />,
+        loader: () => fetch('http://localhost:5000/items'),
       },
       {
         path: '/login',
