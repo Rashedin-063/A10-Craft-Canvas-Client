@@ -153,7 +153,7 @@ const AddItemForm = () => {
 
           <input
             type='number'
-            step='1'
+            step='0.1'
             max={5}
             min={0}
             {...register('rating', { valueAsNumber: true })}

@@ -4,17 +4,15 @@ import CraftItems from "../components/CraftItems";
 import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
-  const  data  = useLoaderData();
-  console.log(data)
+  const  items  = useLoaderData();
   
-   
   return (
     <>
       <Helmet>
         <title>Craft Canvas || Home</title>
       </Helmet>
       <Banner />
-      <CraftItems data={data} />
+      <CraftItems items={items} />
     </>
   );
 }

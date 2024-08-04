@@ -4,11 +4,12 @@ import Footer from '../pages/shared/Footer';
 import useTheme from '../hooks/useTheme';
 
 const Root = () => {
-   const { theme } = useTheme();
+  const { theme } = useTheme();
   return (
-    <div>
+    <div className={`${theme}`}>
       <div
-        className={`max-w-7xl mx-auto lg:px-4 font-fanwood ${theme?.colors?.background} ${theme?.colors?.textPrimary} min-h-[83vh] mb-[3.5px] col-span-5`}>
+        className={`max-w-7xl mx-auto lg:px-4 font-fanwood ${theme?.colors?.background} ${theme?.colors?.textPrimary} min-h-[83vh] mb-[3.5px] col-span-5`}
+      >
         <Navbar />
         <Outlet />
       </div>

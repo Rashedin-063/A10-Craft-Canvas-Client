@@ -19,8 +19,7 @@ const items = [
 const Navbar = () => {
 
   const { theme, toggleTheme } = useTheme();
-  const { user, logOutUser } = useAuth();
-  
+  const { user, logOutUser } = useAuth();  
 
   const handleTheme = () => {
     toggleTheme();
@@ -33,7 +32,9 @@ const Navbar = () => {
   }
 
   return (
-    <div className='navbar primary-bg py-4 lg:py-6 sticky top-0 z-50 bg-cream'>
+    <div
+      className={`navbar ${theme.colors.background} py-4 lg:py-6 sticky top-0 z-10`}
+    >
       <div className='navbar-start -ml-2 lg:-ml-0'>
         {/* dropdown */}
         <div className='dropdown'>
@@ -111,9 +112,7 @@ const Navbar = () => {
       <div className='navbar-end flex gap-2 mt-2'>
         {user ? (
           <div className='flex gap-2 items-center '>
-            <Tooltip title={user.displayName}
-              TransitionComponent={Zoom}
-              arrow>
+            <Tooltip title={user.displayName} TransitionComponent={Zoom} arrow>
               <img
                 className='h-9 w-9 md:h-10 md:w-10 rounded-full mb-2 md:mb-0'
                 src={user.photoURL}
