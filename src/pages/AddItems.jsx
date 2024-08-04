@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import Swal from 'sweetalert2';
 
 const schema = z.object({
   image: z.string().url('Invalid URL').min(1, 'Image is required'),
@@ -61,6 +62,26 @@ const AddItemForm = () => {
     };
     console.log(product)
     
+    // fetch request
+     fetch('http://localhost:5000/items', {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json',
+       },
+       body: JSON.stringify(product),
+     })
+       .then((res) => res.json())
+       .then((data) => {
+         console.log(data);
+         if (data.insertedId) {
+           Swal.fire({
+             title: 'Success!',
+             text: 'Item Added Successfully',
+             icon: 'success',
+             confirmButtonText: 'Cool',
+           });
+         }
+       });
   };
 
   return (
@@ -122,7 +143,7 @@ const AddItemForm = () => {
           <input
             type='number'
             step='1'
-            {...register('price', {valueAsNumber: true})}
+            {...register('price', { valueAsNumber: true })}
             placeholder='Price'
             className='rounded-md p-2 placeholder-warm-coral border-2'
           />
@@ -216,13 +237,13 @@ const AddItemForm = () => {
           {errors.user_name && (
             <p className='text-warm-coral ml-1'>{errors.user_name.message}</p>
           )}
+          <button
+            type='submit'
+            className='rounded-md p-2 bg-deep-plum text-light-cream w-full'
+          >
+            Add Items
+          </button>
         </div>
-        <button
-          type='submit'
-          className='rounded-md p-2 bg-deep-plum text-light-cream'
-        >
-          Add Items
-        </button>
       </form>
     </div>
   );

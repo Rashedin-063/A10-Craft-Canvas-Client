@@ -6,16 +6,19 @@ import Register from '../pages/Register';
 import About from '../pages/About';
 import AddItems from '../pages/AddItems';
 import PrivateRoute from './PrivateRoute';
+import ErrorPage from './../error/ErrorPage';
 
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: '/',
         element: <Home />,
+        loader: () => fetch('http://localhost:5000/items'),
       },
       {
         path: '/addItems',
