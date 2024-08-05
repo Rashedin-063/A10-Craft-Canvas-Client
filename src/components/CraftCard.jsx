@@ -21,8 +21,8 @@ const CraftCard = ({ item }) => {
         data-aos-easing='ease-out-cubic'
         className='card h-full mx-16 md:mx-4 lg:mx-0 bg-charcoal-gray shadow-xl py-5 max-h-xl max-h-2xl text-light-cream '
       >
-        <figure className=' h-40 mx-auto px-12 md:px-8'>
-          <img src={image} alt='Album' className='rounded-2xl' />
+        <figure className=' h-40 mx-auto px-12 md:px-8 hover:scale-105 transition-all duration-300 ease-out'>
+          <img src={image} alt={`Image of ${item_name}`} />
         </figure>
         <div className='card-body items-center text-center -mt-4'>
           <h2 className='text-2xl font-semibold '>{item_name}</h2>

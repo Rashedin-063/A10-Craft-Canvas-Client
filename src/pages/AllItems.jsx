@@ -1,10 +1,8 @@
-import { Link, useLoaderData } from "react-router-dom"
+import { Link, useLoaderData, } from "react-router-dom"
 import Button from "../components/Button";
 
 const AllItems = () => {
   const items = useLoaderData();
-  
-  console.log(items)
   
   return (
     <div className='text-center'>

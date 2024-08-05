@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
   image: z.string().url('Invalid URL').min(1, 'Image is required'),
@@ -25,6 +26,8 @@ const schema = z.object({
 
 
 const AddItemForm = () => {
+ const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -79,8 +82,14 @@ const AddItemForm = () => {
              text: 'Item Added Successfully',
              icon: 'success',
              confirmButtonText: 'Cool',
-           });
+           })
+             .then(result => {
+               if (result.isConfirmed) {
+                 navigate('/myList')
+               }
+             });
          }
+         
        });
   };
 

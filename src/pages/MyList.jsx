@@ -1,11 +1,12 @@
-import { NavLink, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import { useEffect, useState } from 'react';
 import MyListCard from '../components/MyListCard';
 import { RiArrowDropDownLine } from 'react-icons/ri';
+import Swal from 'sweetalert2';
 
 const MyList = () => {
-  const { user } = useAuth();
+  const { user, deleteCurrentUser } = useAuth();
   const items = useLoaderData();
 
   const [myItems, setMyItems] = useState([]);
@@ -21,6 +22,7 @@ const MyList = () => {
     }
   }, [user, items]);
 
+  // handle Filter
   const handleFilter = (filter) => {
     if (filter === 'all') {
       setFilteredItems(myItems);
@@ -30,6 +32,37 @@ const MyList = () => {
       setFilteredItems(myItems.filter((item) => item.customization === 'No'));
     }
   };
+
+  // handle delete
+   const handleDelete = (id) => {
+     console.log(id);
+     Swal.fire({
+       title: 'Are you sure?',
+       text: "You won't be able to revert this!",
+       icon: 'warning',
+       showCancelButton: true,
+       confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+       confirmButtonText: 'Yes, delete it!',
+     }).then((result) => {
+       if (result.isConfirmed) {
+         fetch(`http://localhost:5000/items/${id}`, {
+           method: 'DELETE',
+         })
+           .then((res) => res.json())
+           .then((data) => {
+             console.log(data);
+             if (data.deletedCount > 0) {
+               Swal.fire('Deleted!', 'Your Item has been deleted.', 'success');
+                const remaining = filteredItems.filter(
+                  (item) => item._id !== id
+                );
+                setFilteredItems(remaining);
+             }
+           });
+       }
+     });
+   };
 
   return (
     <div>
@@ -71,9 +104,9 @@ const MyList = () => {
         </details>
       </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-2 '>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 '>
         {filteredItems.map((item) => (
-          <MyListCard key={item._id} item={item} />
+          <MyListCard key={item._id} item={item} handleDelete={handleDelete} />
         ))}
       </div>
     </div>

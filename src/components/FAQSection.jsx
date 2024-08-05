@@ -16,7 +16,7 @@ const FAQSection = () => {
         <div className='flex flex-col lg:flex-row gap-6'>
           <div data-aos='zoom-in' data-aos-duration='2000'>
             <img
-              className=' w-[850px] rounded-3xl'
+              className=' w-[850px] lg:h-[87vh] xl:h-[83vh] 2xl:h-[64vh] rounded-3xl'
               src={q1}
               alt='Craft Supplies'
             />
