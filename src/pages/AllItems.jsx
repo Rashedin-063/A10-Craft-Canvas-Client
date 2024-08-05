@@ -34,7 +34,7 @@ const AllItems = () => {
                   <td>$ {item.price}</td>
                   <td>{item.stockStatus}</td>
                   <td>
-                    <Link to={`/details/${item._id}`}>
+                    <Link to={`/items/${item._id}`}>
                       <Button type={'secondary'} label={'View Details'} />
                     </Link>
                   </td>

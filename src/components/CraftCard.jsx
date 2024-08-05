@@ -49,6 +49,7 @@ const CraftCard = ({ item }) => {
     </div>
   );
 }
+
 CraftCard.propTypes = {
   item: PropTypes.object.isRequired,
 }

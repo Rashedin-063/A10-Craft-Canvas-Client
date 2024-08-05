@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/details/:id',
+        path: '/items/:id',
         element: (
           <PrivateRoute>
             <ViewDetails />
