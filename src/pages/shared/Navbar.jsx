@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import Menu from '../../components/Menu';
 import useTheme from '../../hooks/useTheme';
@@ -20,6 +20,7 @@ const Navbar = () => {
 
   const { theme, toggleTheme } = useTheme();
   const { user, logOutUser } = useAuth();  
+  const navigate = useNavigate();
 
   const handleTheme = () => {
     toggleTheme();
@@ -27,7 +28,10 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOutUser()
-      .then(() => toast.warning('User logout successful'))
+      .then(() => {
+        toast.warning('User logout successful')
+        navigate('/')
+      })
       .catch((error) => console.log(error.message));
   }
 

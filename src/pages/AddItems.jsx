@@ -34,7 +34,7 @@ const AddItemForm = () => {
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
-    mode: onchange
+    mode: 'onChange'
   });
 
   const handleAddCrafts = ({
@@ -207,6 +207,27 @@ const AddItemForm = () => {
         </div>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2'>
+          <input
+            type='email'
+            {...register('user_email')}
+            placeholder='User Email'
+            className='rounded-md p-2 placeholder-warm-coral border-2'
+          />
+          {errors.user_email && (
+            <p className='text-warm-coral ml-1'>{errors.user_email.message}</p>
+          )}
+          <input
+            type='text'
+            {...register('user_name')}
+            placeholder='User Name'
+            className='rounded-md p-2 placeholder-warm-coral border-2'
+          />
+          {errors.user_name && (
+            <p className='text-warm-coral ml-1'>{errors.user_name.message}</p>
+          )}
+        </div>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2'>
           <select
             {...register('stockStatus')}
             className='rounded-md p-2 placeholder-warm-coral border-2'
@@ -223,28 +244,6 @@ const AddItemForm = () => {
           </select>
           {errors.stockStatus && (
             <p className='text-warm-coral ml-1'>{errors.stockStatus.message}</p>
-          )}
-
-          <input
-            type='email'
-            {...register('user_email')}
-            placeholder='User Email'
-            className='rounded-md p-2 placeholder-warm-coral border-2'
-          />
-          {errors.user_email && (
-            <p className='text-warm-coral ml-1'>{errors.user_email.message}</p>
-          )}
-        </div>
-
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-2'>
-          <input
-            type='text'
-            {...register('user_name')}
-            placeholder='User Name'
-            className='rounded-md p-2 placeholder-warm-coral border-2'
-          />
-          {errors.user_name && (
-            <p className='text-warm-coral ml-1'>{errors.user_name.message}</p>
           )}
           <button
             type='submit'

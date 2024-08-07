@@ -1,10 +1,12 @@
 import { Helmet } from 'react-helmet-async';
-import { useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData, useNavigate } from 'react-router-dom'
+import Button from '../components/Button';
 
 const ViewDetails = () => {
   const item = useLoaderData();
+  const navigate = useNavigate();
 
-  const { _id, image,
+  const { image,
     item_name,
     subcategory_name,
     short_description,
@@ -20,7 +22,7 @@ const ViewDetails = () => {
   return (
     <div className='text-center mt-4'>
       <Helmet>
-        <title>Details || {_id}</title>
+        <title>Details of {item_name}</title>
       </Helmet>
       <div className='p-5 mx-auto sm:p-10 md:p-16 bg-charcoal-gray text-light-cream w-3/4 lg:w-full'>
         <div className='flex flex-col max-w-3xl mx-auto overflow-hidden rounded items-center justify-center'>
@@ -29,7 +31,7 @@ const ViewDetails = () => {
             alt={`Image of ${item_name}`}
             className='w-full h-60 sm:h-96 bg-gray-500'
           />
-          <div className='p-6 pb-12 m-4 mx-auto -mt-16 space-y-3 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md bg-charcoal-gray shadow-2xl'>
+          <div className='p-6 m-4 mx-auto -mt-16 space-y-3 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md bg-charcoal-gray shadow-2xl'>
             <div className='space-y-2'>
               <a
                 rel='noopener noreferrer'
@@ -84,6 +86,22 @@ const ViewDetails = () => {
                   {stockStatus}
                 </span>
               </p>
+            </div>
+            <div className='flex justify-center ml-10 lg:ml-16 pt-6 gap-2'>
+              <Link navigate='/'>
+                <Button
+                  type='primary'
+                  label='Go Back'
+                  onClick={() => navigate(-1)}
+                />
+                <Button />
+              </Link>
+              <Button
+                type='secondary'
+                label='Go Home'
+                onClick={() => navigate('/')}
+              />
+              <Button />
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 import { useEffect, useState } from 'react';
 import MyListCard from '../components/MyListCard';
@@ -6,11 +6,13 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 import Swal from 'sweetalert2';
 
 const MyList = () => {
-  const { user, deleteCurrentUser } = useAuth();
+  const { user} = useAuth();
   const items = useLoaderData();
 
   const [myItems, setMyItems] = useState([]);
-   const [filteredItems, setFilteredItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+  
+   const navigate = useNavigate();
 
   useEffect(() => {
     if (user && items) {
@@ -31,6 +33,59 @@ const MyList = () => {
     } else if (filter === 'no') {
       setFilteredItems(myItems.filter((item) => item.customization === 'No'));
     }
+  };
+
+  // handle update
+  const handleUpdate = (
+    {
+      item_name,
+      subcategory_name,
+      image,
+      short_description,
+      price,
+      rating,
+      customization,
+      processing_time,
+      stockStatus,
+    },
+    id
+  ) => {
+    const updatedUser = {
+      item_name,
+      subcategory_name,
+      image,
+      short_description,
+      price,
+      rating,
+      customization,
+      processing_time,
+      stockStatus,
+    };
+
+    // patch request
+    fetch(`http://localhost:5000/items/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updatedUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Item Updated Successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool',
+          });
+          navigate('/myList');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   // handle delete
@@ -106,7 +161,11 @@ const MyList = () => {
 
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 '>
         {filteredItems.map((item) => (
-          <MyListCard key={item._id} item={item} handleDelete={handleDelete} />
+          <MyListCard
+            key={item._id}
+            item={item} handleDelete={handleDelete}
+            handleUpdate={handleUpdate}
+          />
         ))}
       </div>
     </div>
