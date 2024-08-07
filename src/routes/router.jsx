@@ -10,6 +10,7 @@ import ErrorPage from './../error/ErrorPage';
 import AllItems from '../pages/AllItems';
 import ViewDetails from '../pages/ViewDetails';
 import MyList from '../pages/MyList';
+import SubCategory from '../pages/SubCategory';
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch('http://localhost:5000/items'),
+      },
+      {
+        path: '/subCategory',
+        element: <SubCategory />,
+        loader: () => 'http://localhost:5000/items',
       },
       {
         path: '/login',

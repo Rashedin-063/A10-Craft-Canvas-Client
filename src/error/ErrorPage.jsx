@@ -1,16 +1,17 @@
 import {  Link, useRouteError } from 'react-router-dom';
 import Button from '../components/Button';
+import Lottie from 'lottie-react';
+import Animation from '../assets/Animation.json'
 
 
 
 const ErrorPage = () => {
-  const error = useRouteError();
-  
-
   return (
-    <div className='min-h-screen flex flex-col justify-center items-center space-y-8'>
-      <h2 className='text-5xl'>Oops!!!</h2>
-      <p className='text-xl'>Page {error.statusText || error.message}</p>
+    <div className='min-h-screen flex flex-col justify-center items-center'>
+      <Lottie
+        animationData={Animation}
+        style={{height: '300px'}}
+      />
       <Link to='/' refresh='true'>
         <Button label='Go to Home' type='primary'></Button>
       </Link>

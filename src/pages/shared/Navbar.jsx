@@ -6,6 +6,8 @@ import useAuth from './../../hooks/useAuth';
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 import { toast } from 'react-toastify';
+import { Typewriter } from 'react-simple-typewriter';
+
 
 
 const items = [
@@ -19,8 +21,11 @@ const items = [
 const Navbar = () => {
 
   const { theme, toggleTheme } = useTheme();
-  const { user, logOutUser } = useAuth();  
-  const navigate = useNavigate();
+  const { user, logOutUser } = useAuth();
+
+    const navigate = useNavigate();
+
+
 
   const handleTheme = () => {
     toggleTheme();
@@ -105,7 +110,10 @@ const Navbar = () => {
           to='/'
           className='text-[26px] md:text-3xl lg:text-4xl font-bold cursor-pointer flex items-center -ml-3 lg:-ml-0 font-handlee text-warm-coral mt-[6px]'
         >
-          Craft Canvas
+          <Typewriter
+            words={['Craft Canvas']}
+            typeSpeed={90}
+          />
         </Link>
       </div>
       <div className='navbar-center hidden lg:flex'>

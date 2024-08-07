@@ -62,7 +62,7 @@ const Banner = () => {
               <h1
                 data-aos='fade-down'
                 data-aos-duration='3000'
-                className='text-2xl md:text-4xl lg:text-7xl text-light-cream bg-charcoal-gray bg-opacity-45 font-semibold w-2/3 p-2'
+                className='text-2xl md:text-4xl lg:text-7xl text-light-cream bg-charcoal-gray bg-opacity-75 font-semibold w-2/3 p-2'
               >
                 Welcome to Craft Canvas
                 <span className='text-xl md:text-2xl block mt-3  pl-2 text-light-cream'>

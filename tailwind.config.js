@@ -15,6 +15,7 @@ export default {
         'light-cream': '#FFFFF6',
         'charcoal-gray': '#333333',
       },
+      
     },
   },
   plugins: [require('daisyui')],
