@@ -24,9 +24,8 @@ const schema = z.object({
   user_name: z.string().min(1, 'User name is required'),
 });
 
-
 const AddItemForm = () => {
- const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -34,7 +33,7 @@ const AddItemForm = () => {
     formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
-    mode: 'onChange'
+    mode: 'onChange',
   });
 
   const handleAddCrafts = ({
@@ -63,34 +62,32 @@ const AddItemForm = () => {
       user_email,
       user_name,
     };
-    console.log(product)
-    
+    console.log(product);
+
     // fetch request
-     fetch('http://localhost:5000/items', {
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json',
-       },
-       body: JSON.stringify(product),
-     })
-       .then((res) => res.json())
-       .then((data) => {
-         console.log(data);
-         if (data.insertedId) {
-           Swal.fire({
-             title: 'Success!',
-             text: 'Item Added Successfully',
-             icon: 'success',
-             confirmButtonText: 'Cool',
-           })
-             .then(result => {
-               if (result.isConfirmed) {
-                 navigate('/myList')
-               }
-             });
-         }
-         
-       });
+    fetch('https://craft-canvas-server-hazel.vercel.app/items', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Item Added Successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate('/myList');
+            }
+          });
+        }
+      });
   };
 
   return (

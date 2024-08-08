@@ -6,13 +6,13 @@ import { RiArrowDropDownLine } from 'react-icons/ri';
 import Swal from 'sweetalert2';
 
 const MyList = () => {
-  const { user} = useAuth();
+  const { user } = useAuth();
   const items = useLoaderData();
 
   const [myItems, setMyItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
-  
-   const navigate = useNavigate();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user && items) {
@@ -20,7 +20,7 @@ const MyList = () => {
         (item) => item.user_email === user.email
       );
       setMyItems(loadedItems);
-      setFilteredItems(loadedItems)
+      setFilteredItems(loadedItems);
     }
   }, [user, items]);
 
@@ -63,7 +63,7 @@ const MyList = () => {
     };
 
     // patch request
-    fetch(`http://localhost:5000/items/${id}`, {
+    fetch(`https://craft-canvas-server-hazel.vercel.app/items/${id}`, {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
@@ -89,35 +89,33 @@ const MyList = () => {
   };
 
   // handle delete
-   const handleDelete = (id) => {
-     console.log(id);
-     Swal.fire({
-       title: 'Are you sure?',
-       text: "You won't be able to revert this!",
-       icon: 'warning',
-       showCancelButton: true,
-       confirmButtonColor: '#3085d6',
-       cancelButtonColor: '#d33',
-       confirmButtonText: 'Yes, delete it!',
-     }).then((result) => {
-       if (result.isConfirmed) {
-         fetch(`http://localhost:5000/items/${id}`, {
-           method: 'DELETE',
-         })
-           .then((res) => res.json())
-           .then((data) => {
-             console.log(data);
-             if (data.deletedCount > 0) {
-               Swal.fire('Deleted!', 'Your Item has been deleted.', 'success');
-                const remaining = filteredItems.filter(
-                  (item) => item._id !== id
-                );
-                setFilteredItems(remaining);
-             }
-           });
-       }
-     });
-   };
+  const handleDelete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`https://craft-canvas-server-hazel.vercel.app/items/${id}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire('Deleted!', 'Your Item has been deleted.', 'success');
+              const remaining = filteredItems.filter((item) => item._id !== id);
+              setFilteredItems(remaining);
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -163,7 +161,8 @@ const MyList = () => {
         {filteredItems.map((item) => (
           <MyListCard
             key={item._id}
-            item={item} handleDelete={handleDelete}
+            item={item}
+            handleDelete={handleDelete}
             handleUpdate={handleUpdate}
           />
         ))}

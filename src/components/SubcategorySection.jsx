@@ -6,7 +6,7 @@ const SubcategorySection = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/category')
+    fetch('https://craft-canvas-server-hazel.vercel.app/category')
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
@@ -21,10 +21,7 @@ const SubcategorySection = () => {
 
       <div className='grid md:grid-cols-2 lg:grid-cols-3 items-stretch gap-y-8 lg:gap-y-12'>
         {categories.map((category, idx) => (
-          <Link
-            to={`/${category.subcategory_name}`}
-            key={category._id}
-          >
+          <Link to={`/${category.subcategory_name}`} key={category._id}>
             <Fade
               cascade={false}
               damping={0.3}

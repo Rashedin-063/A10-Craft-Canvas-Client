@@ -36,47 +36,43 @@ const Register = () => {
     resolver: zodResolver(schema),
   });
 
-    const handleRegister = ({ name, photo, email, password }) => {
-      console.log(name, photo, email, password);
+  const handleRegister = ({ name, photo, email, password }) => {
+    console.log(name, photo, email, password);
 
-      createUser(email, password)
-        .then((result) => {
-          toast.success('Your registration is successful');
-          console.log(result.user)
-          const creationTime = result.user?.metadata?.creationTime;
-          const lastSignInTime = result.user?.metadata?.lastSignInTime;
+    createUser(email, password)
+      .then((result) => {
+        toast.success('Your registration is successful');
+        console.log(result.user);
+        const creationTime = result.user?.metadata?.creationTime;
+        const lastSignInTime = result.user?.metadata?.lastSignInTime;
 
-          const user = { name, email, photo, creationTime, lastSignInTime }
+        const user = { name, email, photo, creationTime, lastSignInTime };
 
-   // post request
-           fetch('http://localhost:5000/users', {
-             method: 'POST',
-             headers: {
-               'Content-Type': 'application/json',
-             },
-             body: JSON.stringify(user),
-           })
-             .then((res) => res.json())
-             .then((data) => {
-               console.log(data);
-               if (data.insertedId) {
-                 Swal.fire({
-                   title: 'Success!',
-                   text: 'User Added Successfully',
-                   icon: 'success',
-                   confirmButtonText: 'Cool',
-                 });
-               }
-             });
-
+        // post request
+        fetch('https://craft-canvas-server-hazel.vercel.app/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(user),
         })
-        .catch(error => {
-        console.log(error.message)
-
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              Swal.fire({
+                title: 'Success!',
+                text: 'User Added Successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool',
+              });
+            }
+          });
       })
-    };
-
-
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
     <div>
@@ -147,7 +143,7 @@ const Register = () => {
               className='btn bg-warm-coral text-light-cream
                hover:bg-deep-plum'
             >
-             Register
+              Register
             </button>
           </div>
         </form>

@@ -12,7 +12,6 @@ import ViewDetails from '../pages/ViewDetails';
 import MyList from '../pages/MyList';
 import SubCategory from '../pages/SubCategory';
 
-
 const router = createBrowserRouter([
   {
     path: '/',
@@ -22,12 +21,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch('http://localhost:5000/items'),
+        loader: () =>
+          fetch('https://craft-canvas-server-hazel.vercel.app/items'),
       },
       {
         path: '/allItems',
         element: <AllItems />,
-        loader: () => fetch('http://localhost:5000/items'),
+        loader: () =>
+          fetch('https://craft-canvas-server-hazel.vercel.app/items'),
       },
       {
         path: '/addItems',
@@ -45,7 +46,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/items/${params.id}`),
+          fetch(
+            `https://craft-canvas-server-hazel.vercel.app/items/${params.id}`
+          ),
       },
       {
         path: '/myList',
@@ -54,12 +57,14 @@ const router = createBrowserRouter([
             <MyList />
           </PrivateRoute>
         ),
-        loader: () => fetch('http://localhost:5000/items'),
+        loader: () =>
+          fetch('https://craft-canvas-server-hazel.vercel.app/items'),
       },
       {
         path: '/:subcategory_name',
         element: <SubCategory />,
-        loader: () => fetch('http://localhost:5000/items'),
+        loader: () =>
+          fetch('https://craft-canvas-server-hazel.vercel.app/items'),
       },
       {
         path: '/login',
