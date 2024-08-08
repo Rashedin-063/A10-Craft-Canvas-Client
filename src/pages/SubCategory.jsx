@@ -14,18 +14,18 @@ const SubCategory = () => {
   
 
   return (
-    <div>
-      <h2 className='text-center text-4xl mt-8'>Subcategories</h2>
-      <div className='mt-8 lg:w-1/2 mx-4 lg:mx-auto rounded-xl'>
+    <div >
+      <h2 className='text-center text-4xl mt-8 font-semibold'>Subcategory Info</h2>
+      <div className='mt-8 md:w-3/4 mx-4 md:mx-auto rounded-xl'>
         {filteredItems.map((filteredItem) => (
           <div key={filteredItem._id}>
-            <div className='flex  bg-slate-700 shadow-xl justify-center items-center p-4 mb-4'>
-              <div className="w-1/3">
+            <div className='flex flex-col md:flex-row bg-slate-700 shadow-xl justify-center items-center p-4 mb-4 gap-4 md:gap-0'>
+              <div className="md:w-1/3">
                 <figure>
                   <img src={filteredItem.image} className='h-[190px] lg:h-[200px]' alt='Movie' />
                 </figure>
               </div>
-              <div className=' text-light-cream w-2/3 ml-4'>
+              <div className=' text-light-cream ,w-3/4 md:w-2/3  ml-16 md:ml-4 '>
                 <h2 className='flex items-center gap-2'>
                   Item Name :{' '}
                   <span className='text-warm-coral text-lg'>
