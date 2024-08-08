@@ -8,7 +8,6 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-  deleteUser,
   updateProfile
 } from 'firebase/auth';
 import auth from '../firebase/firebase.config';
@@ -75,13 +74,6 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
-  // delete user
-  const deleteCurrentUser = () => {
-    setLoading(true)
-    const user = auth.currentUser;
-    
-    return deleteUser(user);
-  }
 
   const authInfo = {
     user,
@@ -92,7 +84,6 @@ const AuthProvider = ({ children }) => {
     logOutUser,
     googleLogin,
     githubLogin,
-    deleteCurrentUser
   };
 
   return (

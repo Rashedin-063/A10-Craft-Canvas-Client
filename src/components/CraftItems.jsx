@@ -24,7 +24,7 @@ const CraftItems = ({ items }) => {
         charm to any space. Each item is crafted to ignite your creativity
       </p>
       <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 items-stretch'>
-        {items.map((item) => (
+        {items.slice(0, 6).map((item) => (
           <CraftCard key={item._id} item={item} />
         ))}
       </div>

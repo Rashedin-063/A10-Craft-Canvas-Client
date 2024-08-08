@@ -4,6 +4,7 @@ import CraftItems from "../components/CraftItems";
 import { useLoaderData } from "react-router-dom";
 import ClientReview from "../components/ClientReview";
 import FAQSection from "../components/FAQSection";
+import SubcategorySection from "../components/SubcategorySection";
 
 const Home = () => {
   const  items  = useLoaderData();
@@ -15,8 +16,9 @@ const Home = () => {
       </Helmet>
       <Banner />
       <CraftItems items={items} />
+      <SubcategorySection/>
       <FAQSection/>
-      <ClientReview/>
+      <ClientReview />
     </div>
   );
 }

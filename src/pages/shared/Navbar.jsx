@@ -110,10 +110,7 @@ const Navbar = () => {
           to='/'
           className='text-[26px] md:text-3xl lg:text-4xl font-bold cursor-pointer flex items-center -ml-3 lg:-ml-0 font-handlee text-warm-coral mt-[6px]'
         >
-          <Typewriter
-            words={['Craft Canvas']}
-            typeSpeed={90}
-          />
+          <Typewriter words={['Craft Canvas']} typeSpeed={90} />
         </Link>
       </div>
       <div className='navbar-center hidden lg:flex'>
@@ -121,7 +118,12 @@ const Navbar = () => {
           <Menu items={items} />
         </ul>
       </div>
-      <div className='navbar-end flex gap-2 mt-2'>
+      <div
+        data-aos='zoom-in'
+        data-aos-duration='2000'
+        data-aos-delay='1000'
+        className='navbar-end flex gap-2 mt-2'
+      >
         {user ? (
           <div className='flex gap-2 items-center '>
             <Tooltip title={user.displayName} TransitionComponent={Zoom} arrow>
