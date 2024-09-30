@@ -3,7 +3,7 @@
 A simple arts and crafts related webpage created using react, react-router-dom firebase authentication, and MongoDB CRUD functionality
 
 # Live Link
-[Visit Craft Canvas](https://a10-assignment-project.web.app)
+# [Visit Craft Canvas](https://a10-assignment-project.web.app)
 
 
 # Features & Characteristics
